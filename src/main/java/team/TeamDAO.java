@@ -5,9 +5,11 @@ import java.util.List;
 
 public class TeamDAO {
 
-    List <Team> allTeams = new ArrayList<>();
+
 
     public List<Team> getAllTeams() {
+
+        List <Team> allTeams = new ArrayList<>();
 
         Team england = new Team("England");
         Team scotland = new Team("Scotland");
@@ -16,5 +18,10 @@ public class TeamDAO {
         allTeams.add(scotland);
 
         return allTeams;
+    }
+
+    public void saveAllTeams(){
+        System.out.println("Saving teams...");
+        System.out.println("Teams saved");
     }
 }

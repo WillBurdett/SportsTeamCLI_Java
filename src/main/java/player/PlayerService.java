@@ -2,8 +2,10 @@ package player;
 
 import team.TeamDAO;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PlayerService {
 
@@ -15,8 +17,10 @@ public class PlayerService {
         this.teamDAO = teamDAO;
     }
 
-    public List<Player> getAllPlayers(){
-        return playerDAO.getAllPlayers();
+    public void displayAllPlayers(){
+        for (Player p : playerDAO.readFile()) {
+            System.out.println(p.toStringStyle());
+        }
     }
 
     public List<Player> findPlayersByFirstName(String name){
@@ -49,5 +53,28 @@ public class PlayerService {
             }
         }
         return null;
+    }
+    public void createANewPlayer(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Name?");
+        String name = scanner.nextLine();
+
+        System.out.println("Position?");
+        String position = scanner.nextLine();
+
+        System.out.println("Shirt number?");
+        int shirtNum = scanner.nextInt();
+
+        System.out.println("Time of contract expiration:\nYear?");
+        int year = scanner.nextInt();
+        System.out.println("Month?");
+        int month = scanner.nextInt();
+        System.out.println("Day?");
+        int day = scanner.nextInt();
+
+        Player player = new Player(name, position, shirtNum, LocalDate.of(year,month,day));
+
+        playerDAO.savePlayerToFile(player);
+
     }
 }

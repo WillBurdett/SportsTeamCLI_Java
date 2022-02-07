@@ -74,6 +74,8 @@ public class Player implements Actions {
         return name + "," +  position + "," + shirtNumber + "," + contractUntil;
     }
 
+    public String toStringStyle(){return name + " | " +  position + " | " + shirtNumber + " | " + contractUntil;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
