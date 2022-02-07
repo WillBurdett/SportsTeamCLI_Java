@@ -1,14 +1,22 @@
 package player;
 
+import team.TeamDAO;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerService {
 
     private PlayerDAO playerDAO;
+    private TeamDAO teamDAO;
 
-    public PlayerService(PlayerDAO playerDAO) {
+    public PlayerService(PlayerDAO playerDAO, TeamDAO teamDAO) {
         this.playerDAO = playerDAO;
+        this.teamDAO = teamDAO;
+    }
+
+    public List<Player> getAllPlayers(){
+        return playerDAO.getAllPlayers();
     }
 
     public List<Player> findPlayersByFirstName(String name){
